@@ -5,8 +5,7 @@
       <field name="res_model">helpdesk.ticket</field>
       <field name="view_mode">kanban,tree,form</field>
       <field name="context">
-            {'search_default_open': 1,
-             'default_helpdesk_ticket_team_id': active_id}
+            {'default_helpdesk_ticket_team_id': active_id}
           </field>
           <field name="domain">[('team_id', '=', active_id)]</field>
   </record>
