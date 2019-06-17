@@ -42,7 +42,7 @@
         <field name="name">view.helpdesk_category.tree</field>
         <field name="model">helpdesk.ticket.category</field>
         <field name="arch" type="xml">
-            <tree string="Team">
+            <tree editable="top" string="Team">
                 <field name="name"/>
             </tree>
         </field>
