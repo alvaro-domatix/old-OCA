@@ -28,8 +28,8 @@
                 <filter string="Open tickets" name="open" domain="[('closed', '=', False)]"/>
                 <filter string="Closed tickets" name="close" domain="[('closed', '=', True)]"/>
                 <separator/>
-                <!-- <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/> -->
-                <!-- <separator/> -->
+                <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/>
+                <separator/>
                 <filter string="My Tickets" name="mytickets" domain="[('user_id','=',uid)]"/>
                 <filter string="My Followed Tickets" domain="[('message_is_follower', '=', True)]" />
                 <separator/>
