@@ -25,11 +25,11 @@
                 <filter string="Unattended" name="unattended" domain="[('unattended', '=', True )]" />
                 <filter string="High Priority" name="high_priority" domain="[('priority','=','3')]"/>
                 <separator/>
-                <filter string="Open" name="open" domain="[('closed', '=', False)]"/>
-                <filter string="Close" name="close" domain="[('closed', '=', True)]"/>
+                <filter string="Open tickets" name="open" domain="[('closed', '=', False)]"/>
+                <filter string="Closed tickets" name="close" domain="[('closed', '=', True)]"/>
                 <separator/>
-                <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/>
-                <separator/>
+                <!-- <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/> -->
+                <!-- <separator/> -->
                 <filter string="My Tickets" name="mytickets" domain="[('user_id','=',uid)]"/>
                 <filter string="My Followed Tickets" domain="[('message_is_follower', '=', True)]" />
                 <separator/>

@@ -38,7 +38,7 @@ class HelpdeskTicket(models.Model):
     kanban_state_label = fields.Char(
         compute='_compute_kanban_state_label',
         string='Kanban state',
-        track_visibility="onchange")
+        track_visibility='onchange')
 
     legend_priority = fields.Char(
         string='Starred Explanation',
@@ -46,22 +46,22 @@ class HelpdeskTicket(models.Model):
         help="Explanation text to help users using the star on tasks or issues in this stage.")
 
     legend_blocked = fields.Char(
-        string='Red kanban Label',
-        default=lambda s: _('Blocked'),
+        'Red kanban Label',
+        default=lambda s: _("Blocked"),
         translate=True,
         required=True,
         help='Override the default value displayed for the blocked state for kanban selection, when the task or issue is in that stage.')
 
     legend_done = fields.Char(
-        string='Green kanban Label',
-        default=lambda s: _('Ready for Next Stage'),
+        'Green kanban Label',
+        default=lambda s: _("Ready for Next Stage"),
         translate=True,
         required=True,
         help='Override the default value displayed for the done state for kanban selection, when the task or issue is in that stage.')
 
     legend_normal = fields.Char(
-        string='Grey Kanban Label',
-        default=lambda s: _('In progress'),
+        'Grey Kanban Label',
+        default=lambda s: _("In progress"),
         translate=True,
         required=True,
         help='Override the default value displayed for the normal state for kanban selection, when the task or issue is in that stage.')
