@@ -75,7 +75,7 @@ msgstr "Enviar opinión"
 #. module: helpdesk_survey
 #: model:ir.ui.view,arch_db:helpdesk_survey.ticket_view_form_inherited
 msgid "Survey Comment"
-msgstr "Survey Comment"
+msgstr "Comentario de encuesta"
 
 #. module: helpdesk_survey
 #: model:ir.model.fields,field_description:helpdesk_survey.field_helpdesk_ticket_survey_url
