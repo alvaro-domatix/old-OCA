@@ -73,12 +73,6 @@
         <div class="mt16 mb16 text-center">
           <h1>Thanks for your feedback</h1>
         </div>
-        <form method="POST" t-attf-action="/web#id=#{ticket.id}&amp;view_type=form&amp;model=helpdesk.ticket&amp;action=102">
-          <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-        <div class="form-group">
-            <button class="btn btn-primary btn-lg">Continue</button>
-        </div>
-      </form>
       </div>
     </t>
   </template>
