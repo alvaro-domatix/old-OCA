@@ -28,7 +28,7 @@ msgstr "<?xml version=\"1.0\"?>\n"
 "<data><p>Hola ${object.partner_name},</p>\n"
 "        <p>Nos gustaría recibir su opinión sobre el soporte.</p>\n"
 "        <hr/>\n"
-"        <p>Puedes puntuar el servicio prestado en esta <a href=\"${object.survey_url}\">encuesta</a>.</p>\n"
+"        <p>Puede puntuar el servicio prestado en esta <a href=\"${object.survey_url}\">encuesta</a>.</p>\n"
 "        <p>Gracias.</p>\n"
 "      </data>"
 
