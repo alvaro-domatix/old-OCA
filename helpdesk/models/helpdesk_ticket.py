@@ -30,10 +30,13 @@ class HelpdeskTicket(models.Model):
         copy=False,
         default="normal",
         required=True,
-        help="A task's kanban state indicates special situations affecting it: \n"
-              " * Grey us the default situation\n"
-              " * Red indicates something is preventing the progress of this task\n"
-              " * Green indicates the task is ready to be pulled to the next stage")
+        help="A task's kanban state indicates special situations affecting it: \
+        \n"
+             " * Grey us the default situation\n"
+             " * Red indicates something is preventing the progress of this \
+             task\n"
+             " * Green indicates the task is ready to be pulled to the next \
+             stage")
 
     kanban_state_label = fields.Char(
         compute='_compute_kanban_state_label',
@@ -43,28 +46,32 @@ class HelpdeskTicket(models.Model):
     legend_priority = fields.Char(
         string='Starred Explanation',
         translate=True,
-        help="Explanation text to help users using the star on tasks or issues in this stage.")
+        help="Explanation text to help users using the star on tasks or issues \
+            in this stage.")
 
     legend_blocked = fields.Char(
         'Red kanban Label',
         default=lambda s: _("Blocked"),
         translate=True,
         required=True,
-        help='Override the default value displayed for the blocked state for kanban selection, when the task or issue is in that stage.')
+        help='Override the default value displayed for the blocked state for \
+            kanban selection, when the task or issue is in that stage.')
 
     legend_done = fields.Char(
         'Green kanban Label',
         default=lambda s: _("Ready for Next Stage"),
         translate=True,
         required=True,
-        help='Override the default value displayed for the done state for kanban selection, when the task or issue is in that stage.')
+        help='Override the default value displayed for the done state for \
+            kanban selection, when the task or issue is in that stage.')
 
     legend_normal = fields.Char(
         'Grey Kanban Label',
         default=lambda s: _("In progress"),
         translate=True,
         required=True,
-        help='Override the default value displayed for the normal state for kanban selection, when the task or issue is in that stage.')
+        help='Override the default value displayed for the normal state for \
+            kanban selection, when the task or issue is in that stage.')
 
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
