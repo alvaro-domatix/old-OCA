@@ -24,6 +24,7 @@
       <t t-call="portal.portal_layout">
         <h3>Tickets
             <t t-call="portal.portal_searchbar"/>
+            <button name="new_ticket" type="action" class="btn btn-primary" style="float: right; margin-right: 5px;">New Ticket</button>
         </h3>
         <t t-if="not tickets">
             <p>There are no tickets in your account.</p>

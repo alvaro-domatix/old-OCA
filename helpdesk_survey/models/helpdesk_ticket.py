@@ -17,6 +17,7 @@ class HelpdeskTicket(models.Model):
         'Security Token', copy=False,
         default=_get_access_token
     )
+    survey_done = fields.Boolean('Survey Done', value=False)
 
     @api.one
     def _compute_survey_url(self):
