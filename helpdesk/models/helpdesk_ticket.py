@@ -111,9 +111,15 @@ class HelpdeskTicket(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('number', '/') == '/':
-            vals['number'] = self.env['ir.sequence'].next_by_code(
-                'helpdesk.ticket.sequence'
-            ) or '/'
+            if 'company_id' in vals:
+                vals['number'] = self.env['ir.sequence'].with_context(
+                    force_company=vals['company_id']).next_by_code(
+                    'helpdesk.ticket.sequence'
+                ) or '/'
+            else:
+                vals['number'] = self.env['ir.sequence'].next_by_code(
+                    'helpdesk.ticket.sequence'
+                ) or '/'
         res = super().create(vals)
 
         # Check if mail to the user has to be sent
