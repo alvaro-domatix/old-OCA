@@ -2,6 +2,7 @@ import werkzeug
 import logging
 import odoo.http as http
 import requests
+import base64
 from openerp.http import request
 _logger = logging.getLogger(__name__)
 
@@ -36,16 +37,31 @@ class HelpdeskTicketController(http.Controller):
         for field_name, field_value in kw.items():
             vals[field_name] = field_value
 
+        attachment= ""
+
         new_ticket = {
                     'partner_name': vals['name'],
                     'category_id': vals['category'],
                     'partner_email': vals['email'],
                     'description': vals['description'],
                     'name': vals['subject'],
-                    # 'attachment_ids': vals['attachment'],
+                    'attachment_ids': attachment,
                     'channel_id':request.env['helpdesk.ticket.channel'].sudo().search([('name', '=', 'Web')]).id,
                     'partner_id': request.env['res.partner'].sudo().search([('name', '=', vals['name']), ('email', '=', vals['email'])]).id
                  }
         new_ticket_id = request.env['helpdesk.ticket'].sudo().create(new_ticket)
+
+        if 'attachment' in vals:
+            for c_file in request.httprequest.files.getlist('attachment'):
+                data = c_file.read()
+
+                if c_file.filename:
+                    request.env['ir.attachment'].sudo().create({
+                        'name': c_file.filename,
+                        'datas': base64.b64encode(data),
+                        'datas_fname': c_file.filename,
+                        'res_model': 'helpdesk.ticket',
+                        'res_id': new_ticket_id.id
+                    })
 
         return werkzeug.utils.redirect("/my/tickets")
