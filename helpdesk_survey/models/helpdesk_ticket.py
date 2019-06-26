@@ -27,3 +27,12 @@ class HelpdeskTicket(models.Model):
     def send_survey(self):
         self.env.ref('helpdesk_survey.survey_email_template'). \
             send_mail(self.id)
+
+
+    def close_send(self):
+        closed_stage = self.env['helpdesk.ticket.stage'].search([('name', 'ilike', 'hecho')])
+        self.stage_id = closed_stage.id
+        self.closed = True
+
+        self.env.ref('helpdesk_survey.closed_survey_ticket_template'). \
+            send_mail(self.id)
