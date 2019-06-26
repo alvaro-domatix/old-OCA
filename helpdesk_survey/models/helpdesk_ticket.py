@@ -1,10 +1,10 @@
 from odoo import models, fields, api, _
 import uuid
 
+
 class HelpdeskTicket(models.Model):
 
     _inherit = 'helpdesk.ticket'
-
 
     @api.model
     def _get_access_token(self):

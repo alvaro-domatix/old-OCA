@@ -2,8 +2,9 @@ import werkzeug
 import logging
 import odoo.http as http
 from odoo.http import request
-from odoo import exceptions, _
+from odoo import exceptions, api, _
 from odoo.osv import osv
+
 
 class HelpdeskTicketController(http.Controller):
 
@@ -38,6 +39,9 @@ class HelpdeskTicketController(http.Controller):
             # raise osv.except_osv((len(vals) != 2), ('Please select a score'))
 
         # else:
+        if 'support_rating' not in vals:
+            exceptions.Warning('Test')
+            print('test')
         ticket.rating = vals['support_rating']
         ticket.comment = vals['comment']
         ticket.survey_done = True
