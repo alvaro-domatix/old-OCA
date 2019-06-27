@@ -5,13 +5,13 @@ class HelpdeskTicket(models.Model):
 
     _inherit = 'helpdesk.ticket'
 
-
     @api.model
     def _get_access_token(self):
         return str(uuid.uuid4())
 
     rating = fields.Integer(string="Ticket Rating")
-    survey_url = fields.Char(compute="_compute_survey_url", string="Survey URL")
+    survey_url = fields.Char(
+        compute="_compute_survey_url", string="Survey URL")
     comment = fields.Char(string="Ticket Comment")
     access_token = fields.Char(
         'Security Token', copy=False,
@@ -28,9 +28,9 @@ class HelpdeskTicket(models.Model):
         self.env.ref('helpdesk_survey.survey_email_template'). \
             send_mail(self.id)
 
-
     def close_send(self):
-        closed_stage = self.env['helpdesk.ticket.stage'].search([('name', 'ilike', 'hecho')])
+        closed_stage = self.env['helpdesk.ticket.stage']. \
+            search([('name', 'ilike', 'hecho')])
         self.stage_id = closed_stage.id
         self.closed = True
 

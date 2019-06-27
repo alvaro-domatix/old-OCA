@@ -15,7 +15,7 @@ class HelpdeskTicketController(http.Controller):
         values = {}
         for field_name, field_value in kw.items():
             values[field_name] = field_value
-        ticket = http.request.env['helpdesk.ticket'].sudo().\
+        ticket = http.request.env['helpdesk.ticket'].sudo(). \
             search([('id', '=', values['ticket_id'])])
         ticket.stage_id = int(values.get('stage_id'))
 
@@ -24,13 +24,16 @@ class HelpdeskTicketController(http.Controller):
     @http.route('/new/ticket', type="http", auth="user", website=True)
     def create_new_ticket(self, **kw):
 
-        categories = http.request.env['helpdesk.ticket.category'].sudo().search([('active', '=', True)])
+        categories = http.request.env['helpdesk.ticket.category'].sudo(). \
+            search([('active', '=', True)])
         email = http.request.env.user.email
         name = http.request.env.user.name
 
-        return http.request.render('helpdesk.portal_create_ticket', {'categories': categories, 'email': email, 'name': name})
+        return http.request.render('helpdesk.portal_create_ticket', {
+            'categories': categories, 'email': email, 'name': name})
 
-    @http.route('/submitted/ticket', type="http", auth="user", website=True, csrf=True)
+    @http.route('/submitted/ticket',
+        type="http", auth="user", website=True, csrf=True)
     def submit_ticket(self, **kw):
         vals = {}
 
@@ -46,10 +49,15 @@ class HelpdeskTicketController(http.Controller):
                     'description': vals['description'],
                     'name': vals['subject'],
                     'attachment_ids': attachment,
-                    'channel_id':request.env['helpdesk.ticket.channel'].sudo().search([('name', '=', 'Web')]).id,
-                    'partner_id': request.env['res.partner'].sudo().search([('name', '=', vals['name']), ('email', '=', vals['email'])]).id
+                    'channel_id':request.env['helpdesk.ticket.channel']. \
+                        sudo().search([('name', '=', 'Web')]).id,
+                    'partner_id': request.env['res.partner']. \
+                        sudo().search([
+                            ('name', '=', vals['name']),
+                            ('email', '=', vals['email'])]).id
                  }
-        new_ticket_id = request.env['helpdesk.ticket'].sudo().create(new_ticket)
+        new_ticket_id = request.env['helpdesk.ticket']. \
+            sudo().create(new_ticket)
 
         if 'attachment' in vals:
             for c_file in request.httprequest.files.getlist('attachment'):
