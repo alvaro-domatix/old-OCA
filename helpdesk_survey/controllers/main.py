@@ -1,9 +1,6 @@
-import werkzeug
-import logging
 import odoo.http as http
 from odoo.http import request
-from odoo import exceptions, _
-from odoo.osv import osv
+
 
 class HelpdeskTicketController(http.Controller):
 
@@ -35,6 +32,11 @@ class HelpdeskTicketController(http.Controller):
 
         for field_name, field_value in kw.items():
             vals[field_name] = field_value
+
+        if 'support_rating' not in vals:
+            return http.request.render(
+                'helpdesk_survey.helpdesk_survey_not_rating', {
+                    'ticket': ticket})
 
         ticket.rating = vals['support_rating']
         ticket.comment = vals['comment']

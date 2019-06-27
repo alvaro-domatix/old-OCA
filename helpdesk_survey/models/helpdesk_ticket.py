@@ -1,6 +1,7 @@
 from odoo import models, fields, api, _
 import uuid
 
+
 class HelpdeskTicket(models.Model):
 
     _inherit = 'helpdesk.ticket'
