@@ -7,7 +7,6 @@
     <field name="arch" type="xml">
       <field name="stage_id" position="before">
         <button string="Send Survey" name="send_survey" type="object" attrs="{'invisible':[('survey_done', '==', True)]}"/>
-        <button string="Close ticket and send survey" name="close_send" type="object" attrs="{'invisible': [('closed', '=', True)]}"/>
       </field>
       <page name="other_info" position="after">
         <page class="oe_edit_onlys" string="Survey Info" name="survey_info" attrs="{'invisible':[('survey_done', '==', False)]}">
