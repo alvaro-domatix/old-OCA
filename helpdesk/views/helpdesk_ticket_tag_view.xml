@@ -43,6 +43,7 @@
     <field name="arch" type="xml">
       <tree editable="top" string="Ticket Tags">
         <field name="name" required="1"/>
+        <field name="active"/>
         <field name="color"/>
       </tree>
     </field>

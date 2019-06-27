@@ -41,6 +41,8 @@
                           </div>
                           <div>
                           <field name="user_ids" widget="many2many_tags"/>
+                        </div>
+                        <div>
                           <field name="company_id" groups="base.group_multi_company"/>
                         </div>
                       </div>
@@ -61,6 +63,8 @@
         <field name="arch" type="xml">
             <tree string="Team">
                 <field name="name"/>
+                <field name="user_ids" widget="many2many_tags"/>
+                <field name="company_id" groups="base.group_multi_company"/>
             </tree>
         </field>
     </record>

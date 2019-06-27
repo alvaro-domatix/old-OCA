@@ -42,8 +42,10 @@
         <field name="name">view.helpdesk_category.tree</field>
         <field name="model">helpdesk.ticket.category</field>
         <field name="arch" type="xml">
-            <tree editable="top" string="Team">
+            <tree editable="top" string="Category">
                 <field name="name"/>
+                <field name="active"/>
+                <field name="company_id" groups="base.group_multi_company"/>
             </tree>
         </field>
     </record>
