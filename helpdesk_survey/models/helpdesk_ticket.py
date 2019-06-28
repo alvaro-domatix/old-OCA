@@ -18,7 +18,11 @@ class HelpdeskTicket(models.Model):
         'Security Token', copy=False,
         default=_get_access_token
     )
-    survey_done = fields.Boolean('Survey Done', value=False)
+    survey_done = fields.Boolean('Survey Done', default=False)
+
+    survey_sent = fields.Boolean(
+        string='Survey Sent',
+        default=False)
 
     no_score = fields.Boolean(
         default=False)
@@ -31,3 +35,4 @@ class HelpdeskTicket(models.Model):
     def send_survey(self):
         self.env.ref('helpdesk_survey.survey_email_template'). \
             send_mail(self.id)
+        self.survey_sent = True

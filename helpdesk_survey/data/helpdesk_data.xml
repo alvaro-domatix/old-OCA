@@ -10,7 +10,7 @@
       <field name="auto_delete" eval="False"/>
       <field name="lang">${object.partner_id.lang}</field>
       <field name="body_html" type="xml">
-        <p>Hello ${object.partner_name},</p>
+        <p>Hello ${object.partner_id.name},</p>
         <p>We would like to get your feedback on the support.</p>
         <hr/>
         <p>You can rate the service provided in this <a href='${object.survey_url}'>survey</a>.</p>
@@ -27,7 +27,7 @@
       <field name="auto_delete" eval="False"/>
       <field name="lang">${object.partner_id.lang}</field>
       <field name="body_html" type="xml">
-        <p>Hello ${object.partner_name},</p>
+        <p>Hello ${object.partner_id.name},</p>
         <p>Your ticket has been resolved and closed.</p>
         <hr/>
         <p>We would like to get your feedback on the support.</p>
