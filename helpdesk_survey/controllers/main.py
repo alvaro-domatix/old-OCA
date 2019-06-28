@@ -11,6 +11,8 @@ class HelpdeskTicketController(http.Controller):
         ticket = request.env['helpdesk.ticket'].sudo(). \
             search([('access_token', '=', token)])
 
+        ticket.no_score = False
+        ticket.comment = ''
         if ticket.rating:
             return http.request.render( \
                 'helpdesk_survey.survey_already_complete', {
@@ -34,8 +36,13 @@ class HelpdeskTicketController(http.Controller):
             vals[field_name] = field_value
 
         if 'support_rating' not in vals:
+            ticket.no_score = True
+            if vals.get('comment'):
+                ticket.comment = vals.get('comment')
+            else:
+                ticket.comment = ''
             return http.request.render(
-                'helpdesk_survey.helpdesk_survey_not_rating', {
+                'helpdesk_survey.helpdesk_ticket_survey_page', {
                     'ticket': ticket})
 
         ticket.rating = vals['support_rating']
