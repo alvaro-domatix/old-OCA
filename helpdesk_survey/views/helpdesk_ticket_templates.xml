@@ -28,11 +28,11 @@
                     }
           </style>
           <div class="text-center">
-            <!-- <t t-if="not valid">
+            <t t-if="ticket.no_score == True">
               <div class="alert alert-danger">
                 <strong>Please, select a score</strong>
               </div>
-            </t> -->
+            </t>
             <label>
               <input type="radio" name="support_rating" id="input_1" value="1" />
               <img src="/helpdesk_survey/static/src/img/1-star.jpg"/>
@@ -61,8 +61,13 @@
 
 
           <div class="form-group">
-               <label for="comment">Comment</label>
-              <textarea class="form-control" rows="5" name="comment"></textarea>
+            <label for="comment">Comment</label>
+              <t t-if="ticket.no_score == False">
+                <textarea class="form-control" rows="5" name="comment"><t t-esc="ticket.comment"/></textarea>
+              </t>
+              <t t-else="">
+                <textarea class="form-control" rows="5" name="comment"><t t-esc="ticket.comment"/></textarea>
+              </t>
           </div>
 
           <div class="form-group">
@@ -88,16 +93,6 @@
       <div class="container">
         <div class="mt16 mb16 text-center">
           <h1>Survey already complete</h1>
-        </div>
-      </div>
-    </t>
-  </template>
-
-  <template id="helpdesk_survey_not_rating" name="Survey no rating">
-    <t t-call="portal.portal_layout">
-      <div class="alert alert-danger">
-        <div class="mt16 mb16 text-center">
-          <h1>Please, select a score.</h1>
         </div>
       </div>
     </t>

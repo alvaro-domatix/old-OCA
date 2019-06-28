@@ -20,6 +20,9 @@ class HelpdeskTicket(models.Model):
     )
     survey_done = fields.Boolean('Survey Done', value=False)
 
+    no_score = fields.Boolean(
+        default=False)
+
     @api.one
     def _compute_survey_url(self):
         self.survey_url = "/ticket/survey/" + str(self.access_token)
