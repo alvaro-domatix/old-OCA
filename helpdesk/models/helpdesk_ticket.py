@@ -20,7 +20,6 @@ class HelpdeskTicket(models.Model):
         'res.users',
         string='Assigned user',)
 
-<<<<<<< HEAD
     active = fields.Boolean(
         default=True)
 
@@ -75,8 +74,6 @@ class HelpdeskTicket(models.Model):
         help='Override the default value displayed for the normal state for \
             kanban selection, when the task or issue is in that stage.')
 
-=======
->>>>>>> 3352fbeb7adacd1c4978974f29c698a90a49306a
     user_ids = fields.Many2many(
         comodel_name='res.users',
         related='team_id.user_ids',
@@ -150,7 +147,6 @@ class HelpdeskTicket(models.Model):
             self.partner_name = self.partner_id.name
             self.partner_email = self.partner_id.email
 
-<<<<<<< HEAD
     @api.depends('stage_id', 'kanban_state')
     def _compute_kanban_state_label(self):
         for ticket in self:
@@ -161,8 +157,6 @@ class HelpdeskTicket(models.Model):
             else:
                 ticket.kanban_state_label = ticket.legend_done
 
-=======
->>>>>>> 3352fbeb7adacd1c4978974f29c698a90a49306a
     @api.multi
     @api.onchange('team_id', 'user_id')
     def _onchange_dominion_user_id(self):
