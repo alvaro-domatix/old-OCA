@@ -22,14 +22,20 @@
                 <field name="tag_ids"/>
                 <field name="stage_id"/>
                 <filter string="Unassigned" name="unassigned" domain="[('user_id','=',False)]"/>
-                <filter string="Open" name="open" domain="[('closed', '=', False )]" />
                 <filter string="Unattended" name="unattended" domain="[('unattended', '=', True )]" />
                 <filter string="High Priority" name="high_priority" domain="[('priority','=','3')]"/>
+                <separator/>
+                <filter string="Open tickets" name="open" domain="[('closed', '=', False)]"/>
+                <filter string="Closed tickets" name="close" domain="[('closed', '=', True)]"/>
+                <separator/>
+                <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/>
                 <separator/>
                 <filter string="My Tickets" name="mytickets" domain="[('user_id','=',uid)]"/>
                 <filter string="My Followed Tickets" domain="[('message_is_follower', '=', True)]" />
                 <separator/>
                 <filter name="last_week" string="Last Week" domain="[('create_date','&gt;', (context_today() - datetime.timedelta(weeks=1)).strftime('%%Y-%%m-%%d') )]"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                 <separator/>
                 <filter string="My Activities" name="activities_my"
                   domain="[('activity_ids.user_id', '=', uid)]"/>
@@ -46,10 +52,12 @@
                   <filter string="Team" domain="[]" context="{'group_by':'team_id'}"/>
                   <filter string="User" domain="[]" context="{'group_by':'user_id'}"/>
                   <filter string="Stage" domain="[]" context="{'group_by':'stage_id'}"/>
+                  <filter string="Category" domain="[]" context="{'group_by': 'category_id'}"/>
                 </group>
             </search>
         </field>
     </record>
+
     <record id="ticket_view_form" model="ir.ui.view">
         <field name="name">helpdesk.ticket.view.form</field>
         <field name="model">helpdesk.ticket</field>
@@ -64,6 +72,12 @@
                             options="{'fold_field': 'fold'}"/>
                 </header>
                 <sheet>
+                  <div class="oe_button_box" name="button_box">
+                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
+                      <field name="active" widget="boolean_button" options="{'terminology': 'active'}"/>
+                    </button>
+                  </div>
+                  <field name="kanban_state" widget="state_selection"/>
                     <div class="oe_title">
                         <h1 class="oe_title">
                             <field name="number"/>

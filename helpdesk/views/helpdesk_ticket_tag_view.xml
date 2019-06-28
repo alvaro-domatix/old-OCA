@@ -41,8 +41,10 @@
     <field name="name">helpdesk.ticket.tag.tree</field>
     <field name="model">helpdesk.ticket.tag</field>
     <field name="arch" type="xml">
-      <tree string="Ticket Tags">
-        <field name="name"/>
+      <tree editable="top" string="Ticket Tags">
+        <field name="name" required="1"/>
+        <field name="active"/>
+        <field name="color"/>
       </tree>
     </field>
   </record>
