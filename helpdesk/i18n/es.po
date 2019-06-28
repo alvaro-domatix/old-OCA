@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 07:39+0000\n"
-"PO-Revision-Date: 2019-06-26 07:39+0000\n"
+"POT-Creation-Date: 2019-06-28 08:53+0000\n"
+"PO-Revision-Date: 2019-06-28 08:53+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,8 +27,8 @@ msgid "<?xml version=\"1.0\"?>\n"
 "        <p>The ticket ${object.number} has been assigned to you.</p>\n"
 "      </data>"
 msgstr "<?xml version=\"1.0\"?>\n"
-"<data><p>Hello ${object.user_id.name},</p>\n"
-"        <p>The ticket ${object.number} has been assigned to you.</p>\n"
+"<data><p>Hola ${object.user_id.name},</p>\n"
+"        <p>El ticket ${object.number} se te ha asignado.</p>\n"
 "      </data>"
 
 #. module: helpdesk
@@ -61,6 +61,18 @@ msgid "<strong>Last Stage Update:</strong>"
 msgstr "<strong>Última actualización de estado:</strong>"
 
 #. module: helpdesk
+#: model:ir.model.fields,help:helpdesk.field_helpdesk_ticket_kanban_state
+msgid "A task's kanban state indicates special situations affecting it:         \n"
+" * Grey us the default situation\n"
+" * Red indicates something is preventing the progress of this              task\n"
+" * Green indicates the task is ready to be pulled to the next              stage"
+msgstr "El estado Kanban es un ticket indica que existen situaciones especiales:         \n"
+" * El gris es la situación por defecto\n"
+" * El rojo indica que hay algo que impide que el ticket avance\n"
+" * El verde indica que la tarea puede pasar a la siguiente etapa"
+
+#. module: helpdesk
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_active
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_category_active
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_channel_active
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_stage_active
@@ -82,11 +94,7 @@ msgid "All"
 msgstr "Todos"
 
 #. module: helpdesk
-#: selection:helpdesk.ticket,priority:0
-msgid "Alta"
-msgstr "Alta"
-
-#. module: helpdesk
+#: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
 #: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_ticket_category_search
 #: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_ticket_channel_search
 #: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_ticket_stage_search
@@ -121,9 +129,21 @@ msgid "Awaiting"
 msgstr "En espera"
 
 #. module: helpdesk
-#: selection:helpdesk.ticket,priority:0
-msgid "Baja"
-msgstr "Baja"
+#: code:addons/helpdesk/models/helpdesk_ticket.py:55
+#, python-format
+msgid "Blocked"
+msgstr "Bloqueado"
+
+#. module: helpdesk
+#: model:helpdesk.ticket,legend_blocked:helpdesk.helpdesk_ticket_1
+#: model:helpdesk.ticket,legend_blocked:helpdesk.helpdesk_ticket_2
+#: model:helpdesk.ticket,legend_blocked:helpdesk.helpdesk_ticket_3
+#: model:helpdesk.ticket,legend_blocked:helpdesk.helpdesk_ticket_4
+#: model:helpdesk.ticket,legend_blocked:helpdesk.helpdesk_ticket_5
+#: model:helpdesk.ticket,legend_blocked:helpdesk.helpdesk_ticket_6
+#: model:helpdesk.ticket,legend_blocked:helpdesk.helpdesk_ticket_7
+msgid "Bloqueada"
+msgstr "Bloqueada"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.portal_my_tickets
@@ -131,9 +151,9 @@ msgid "By"
 msgstr "Por"
 
 #. module: helpdesk
-#: model:helpdesk.ticket.stage,name:helpdesk.helpdesk_ticket_stage_cancel
-msgid "Cancel"
-msgstr "Cancelar"
+#: model:helpdesk.ticket.stage,name:helpdesk.helpdesk_ticket_stage_cancelled
+msgid "Cancelled"
+msgstr "Cancelado"
 
 #. module: helpdesk
 #: model:ir.actions.act_window,name:helpdesk.helpdesk_ticket_category_action
@@ -144,13 +164,16 @@ msgstr "Categorías"
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_category_id
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_team_category_ids
+#: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
 #: model:ir.ui.view,arch_db:helpdesk.portal_create_ticket
 #: model:ir.ui.view,arch_db:helpdesk.portal_my_tickets
+#: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_category_tree
 msgid "Category"
 msgstr "Categoría"
 
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_channel_id
+#: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_channel_tree
 msgid "Channel"
 msgstr "Canal"
 
@@ -180,6 +203,11 @@ msgstr "Cerrado"
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_closed_date
 msgid "Closed Date"
 msgstr "Fecha de cierre"
+
+#. module: helpdesk
+#: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
+msgid "Closed tickets"
+msgstr "Tickets cerrados"
 
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_tag_color
@@ -273,6 +301,22 @@ msgid "Email Template"
 msgstr "Plantilla de correo electrónico"
 
 #. module: helpdesk
+#: model:helpdesk.ticket,legend_normal:helpdesk.helpdesk_ticket_1
+#: model:helpdesk.ticket,legend_normal:helpdesk.helpdesk_ticket_2
+#: model:helpdesk.ticket,legend_normal:helpdesk.helpdesk_ticket_3
+#: model:helpdesk.ticket,legend_normal:helpdesk.helpdesk_ticket_4
+#: model:helpdesk.ticket,legend_normal:helpdesk.helpdesk_ticket_5
+#: model:helpdesk.ticket,legend_normal:helpdesk.helpdesk_ticket_6
+#: model:helpdesk.ticket,legend_normal:helpdesk.helpdesk_ticket_7
+msgid "En proceso"
+msgstr "En proceso"
+
+#. module: helpdesk
+#: model:ir.model.fields,help:helpdesk.field_helpdesk_ticket_legend_priority
+msgid "Explanation text to help users using the star on tasks or issues             in this stage."
+msgstr "Explanation text to help users using the star on tasks or issues             in this stage."
+
+#. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_stage_fold
 msgid "Folded in Kanban"
 msgstr "Doblado en Kanban"
@@ -281,6 +325,26 @@ msgstr "Doblado en Kanban"
 #: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
 msgid "Future Activities"
 msgstr "Actividades futuras"
+
+#. module: helpdesk
+#: selection:helpdesk.ticket,kanban_state:0
+msgid "Green"
+msgstr "Verde"
+
+#. module: helpdesk
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_legend_done
+msgid "Green kanban Label"
+msgstr "Etiqueta verde Kanban"
+
+#. module: helpdesk
+#: selection:helpdesk.ticket,kanban_state:0
+msgid "Grey"
+msgstr "Gris"
+
+#. module: helpdesk
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_legend_normal
+msgid "Grey Kanban Label"
+msgstr "Etiqueta Kanban gris"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
@@ -347,7 +411,8 @@ msgid "Helps you handle your helpdesk security."
 msgstr "Ayuda a manejar tu seguridad de Helpdesk."
 
 #. module: helpdesk
-#: code:addons/helpdesk/models/helpdesk_ticket.py:66
+#: code:addons/helpdesk/models/helpdesk_ticket.py:128
+#: selection:helpdesk.ticket,priority:0
 #, python-format
 msgid "High"
 msgstr "Alta"
@@ -364,12 +429,12 @@ msgid "History"
 msgstr "Historial"
 
 #. module: helpdesk
-#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_category_id_4645
-#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_channel_id_4635
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_category_id_6823
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_channel_id_6813
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_id
-#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_stage_id_4614
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_stage_id_6792
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_tag_id
-#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_team_id_4664
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_team_id_6842
 msgid "ID"
 msgstr "ID (identificación)"
 
@@ -382,6 +447,22 @@ msgstr "Si está establecido, se enviará un email al cliente cuando el ticket a
 #: model:helpdesk.ticket.stage,name:helpdesk.helpdesk_ticket_stage_in_progress
 msgid "In Progress"
 msgstr "En progreso"
+
+#. module: helpdesk
+#: code:addons/helpdesk/models/helpdesk_ticket.py:71
+#, python-format
+msgid "In progress"
+msgstr "En progreso"
+
+#. module: helpdesk
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_kanban_state_label
+msgid "Kanban state"
+msgstr "estado de Kanban"
+
+#. module: helpdesk
+#: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_team_form
+msgid "Keep empty for everyone to see this team"
+msgstr "Mantener vacío para que sea visible por todos"
 
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket___last_update
@@ -432,15 +513,22 @@ msgid "Late Activities"
 msgstr "Actividades tardías"
 
 #. module: helpdesk
-#: code:addons/helpdesk/models/helpdesk_ticket.py:64
+#: model:helpdesk.ticket,legend_done:helpdesk.helpdesk_ticket_1
+#: model:helpdesk.ticket,legend_done:helpdesk.helpdesk_ticket_2
+#: model:helpdesk.ticket,legend_done:helpdesk.helpdesk_ticket_3
+#: model:helpdesk.ticket,legend_done:helpdesk.helpdesk_ticket_4
+#: model:helpdesk.ticket,legend_done:helpdesk.helpdesk_ticket_5
+#: model:helpdesk.ticket,legend_done:helpdesk.helpdesk_ticket_6
+#: model:helpdesk.ticket,legend_done:helpdesk.helpdesk_ticket_7
+msgid "Listo para la siguiente etapa"
+msgstr "Listo para la siguiente etapa"
+
+#. module: helpdesk
+#: code:addons/helpdesk/models/helpdesk_ticket.py:126
+#: selection:helpdesk.ticket,priority:0
 #, python-format
 msgid "Low"
 msgstr "Baja"
-
-#. module: helpdesk
-#: selection:helpdesk.ticket,priority:0
-msgid "Media"
-msgstr "Media"
 
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_attachment_ids
@@ -448,7 +536,8 @@ msgid "Media Attachments"
 msgstr "Archivos adjuntos"
 
 #. module: helpdesk
-#: code:addons/helpdesk/models/helpdesk_ticket.py:65
+#: code:addons/helpdesk/models/helpdesk_ticket.py:127
+#: selection:helpdesk.ticket,priority:0
 #, python-format
 msgid "Medium"
 msgstr "Media"
@@ -457,11 +546,6 @@ msgstr "Media"
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_team_user_ids
 msgid "Members"
 msgstr "Miembros"
-
-#. module: helpdesk
-#: selection:helpdesk.ticket,priority:0
-msgid "Muy alta"
-msgstr "Muy alta"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
@@ -508,7 +592,7 @@ msgid "Newest"
 msgstr "Más nuevo"
 
 #. module: helpdesk
-#: code:addons/helpdesk/models/helpdesk_ticket.py:148
+#: code:addons/helpdesk/models/helpdesk_ticket.py:238
 #, python-format
 msgid "No Subject"
 msgstr "Sin asunto"
@@ -535,13 +619,28 @@ msgstr "Número de tickets sin atender"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
-msgid "Open"
-msgstr "Abierto"
+msgid "Open tickets"
+msgstr "Tickets abiertos"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.ticket_view_form
 msgid "Other Information"
 msgstr "Otra información"
+
+#. module: helpdesk
+#: model:ir.model.fields,help:helpdesk.field_helpdesk_ticket_legend_blocked
+msgid "Override the default value displayed for the blocked state for             kanban selection, when the task or issue is in that stage."
+msgstr "Sobreescribe el valor por mostrado por defecto del estado bloqueado del Kanban, cuando el ticket se encuentra en este estado."
+
+#. module: helpdesk
+#: model:ir.model.fields,help:helpdesk.field_helpdesk_ticket_legend_done
+msgid "Override the default value displayed for the done state for             kanban selection, when the task or issue is in that stage."
+msgstr "Sobreescribe el valor por mostrado por defecto del estado bloqueado del Kanban, cuando el ticket se encuentra en este estado."
+
+#. module: helpdesk
+#: model:ir.model.fields,help:helpdesk.field_helpdesk_ticket_legend_normal
+msgid "Override the default value displayed for the normal state for             kanban selection, when the task or issue is in that stage."
+msgstr "Sobreescribe el valor por mostrado por defecto del estado bloqueado del Kanban, cuando el ticket se encuentra en este estado."
 
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_partner_id
@@ -550,14 +649,14 @@ msgid "Partner"
 msgstr "Empresa"
 
 #. module: helpdesk
-#: code:addons/helpdesk/models/helpdesk_ticket.py:186
+#: code:addons/helpdesk/models/helpdesk_ticket.py:276
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_partner_email
 #, python-format
 msgid "Partner Email"
 msgstr "Email del cliente"
 
 #. module: helpdesk
-#: code:addons/helpdesk/models/helpdesk_ticket.py:188
+#: code:addons/helpdesk/models/helpdesk_ticket.py:278
 #, python-format
 msgid "Partner Id"
 msgstr "ID de cliente"
@@ -570,12 +669,33 @@ msgstr "Nombre de la empresa"
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_views_pivot
 msgid "Pivot Analysis"
-msgstr "Análisis pivot"
+msgstr "Análisis de pivote"
 
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_priority
 msgid "Priority"
 msgstr "Prioridad"
+
+#. module: helpdesk
+#: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_team_form
+msgid "Productivity"
+msgstr "Productividad"
+
+#. module: helpdesk
+#: code:addons/helpdesk/models/helpdesk_ticket.py:63
+#, python-format
+msgid "Ready for Next Stage"
+msgstr "Listo para la siguiente etapa"
+
+#. module: helpdesk
+#: selection:helpdesk.ticket,kanban_state:0
+msgid "Red"
+msgstr "Rojo"
+
+#. module: helpdesk
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_legend_blocked
+msgid "Red kanban Label"
+msgstr "Etiqueta roja Kanban"
 
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_res_partner_helpdesk_ticket_ids
@@ -629,6 +749,11 @@ msgid "Stages"
 msgstr "Etapas"
 
 #. module: helpdesk
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_legend_priority
+msgid "Starred Explanation"
+msgstr "Explicación de la estrella"
+
+#. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.portal_create_ticket
 msgid "Subject"
 msgstr "Asunto"
@@ -651,8 +776,6 @@ msgstr "Etiquetas"
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_team_id
 #: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
-#: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_category_tree
-#: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_channel_tree
 #: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_team_tree
 msgid "Team"
 msgstr "Equipo"
@@ -761,6 +884,11 @@ msgstr "Sin atender"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
+msgid "Unread Messages"
+msgstr "Mensajes sin leer"
+
+#. module: helpdesk
+#: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
 #: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_ticket_team_search
 #: model:res.groups,name:helpdesk.group_helpdesk_user
 msgid "User"
@@ -772,7 +900,18 @@ msgid "User: Personal tickets"
 msgstr "Usuario: Tickets personales"
 
 #. module: helpdesk
-#: code:addons/helpdesk/models/helpdesk_ticket.py:67
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_user_ids
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: helpdesk
+#: code:addons/helpdesk/models/helpdesk_ticket.py:129
+#: selection:helpdesk.ticket,priority:0
 #, python-format
 msgid "Very High"
 msgstr "Muy alta"
+
+#. module: helpdesk
+#: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_kanban_state
+msgid "kanban state"
+msgstr "Estado de Kanban"
