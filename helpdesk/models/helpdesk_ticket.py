@@ -197,11 +197,13 @@ class HelpdeskTicket(models.Model):
                 stage_obj = self.env['helpdesk.ticket.stage'].browse(
                     [vals['stage_id']])
                 vals['last_stage_update'] = now
+                if stage_obj.closed is False:
+                    self.closed_date = False
                 if stage_obj.closed:
                     vals['closed_date'] = now
             if vals.get('user_id'):
                 vals['assigned_date'] = now
-            if 'kanban_state' not in vals:
+            if vals.get('kanban_state') not in vals:
                 vals['kanban_state'] = 'normal'
 
         res = super(HelpdeskTicket, self).write(vals)
