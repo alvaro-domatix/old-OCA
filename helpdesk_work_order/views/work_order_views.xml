@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="view_work_order_helpdesk_form" model="ir.ui.view">
+    <field name="name">view.work_order_helpdesk.form</field>
+    <field name="model">work.order</field>
+    <field name='inherit_id' ref='work_order.view_work_order_form'/>
+    <field name="arch" type="xml">
+        <field name="quotation_notes" position="after">
+          <group>
+            <field name="ticket_description" attrs="{'invisible':[('ticket_description', '=', False)]}"/>
+          </group>
+        </field>
+    </field>
+    </record>
+
+</odoo>
