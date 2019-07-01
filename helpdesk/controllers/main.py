@@ -58,7 +58,6 @@ class HelpdeskTicketController(http.Controller):
         new_ticket_id = request.env['helpdesk.ticket'].sudo().create(
             new_ticket)
         new_ticket_id.message_subscribe_users(user_ids=request.env.user.id)
-        import pdb; pdb.set_trace()
 
         if 'attachment' in vals:
             for c_file in request.httprequest.files.getlist('attachment'):
