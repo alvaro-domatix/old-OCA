@@ -12,7 +12,7 @@ class CustomerPortal(CustomerPortal):
     def _prepare_portal_layout_values(self):
         values = super(CustomerPortal, self)._prepare_portal_layout_values()
         partner = request.env.user.partner_id
-        ticket_count = request.env['helpdesk.ticket'].sudo().search_count(
+        ticket_count = request.env['helpdesk.ticket'].search_count(
             [('partner_id', 'child_of', partner.id)])
         values['ticket_count'] = ticket_count
         return values
@@ -81,7 +81,7 @@ class CustomerPortal(CustomerPortal):
             step=self._items_per_page
         )
         # content according to pager and archive selected
-        tickets = HelpdesTicket.sudo().search(
+        tickets = HelpdesTicket.search(
             domain,
             order=order,
             limit=self._items_per_page,

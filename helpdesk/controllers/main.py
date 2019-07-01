@@ -55,7 +55,7 @@ class HelpdeskTicketController(http.Controller):
                     ('name', '=', request.env.user.name),
                     ('email', '=', vals['email'])]).id
         }
-        new_ticket_id = request.env['helpdesk.ticket'].sudo().create(
+        new_ticket_id = request.env['helpdesk.ticket'].create(
             new_ticket)
 
         if 'attachment' in vals:
