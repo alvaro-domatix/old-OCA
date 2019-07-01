@@ -355,7 +355,7 @@ msgstr "Agrupar por"
 #: model:ir.module.category,name:helpdesk.module_helpdesk_category
 #: model:ir.ui.menu,name:helpdesk.helpdesk_ticket_main_menu
 msgid "Helpdesk"
-msgstr "Helpdesk"
+msgstr "Gestión de soporte"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_ticket_category_search
@@ -366,7 +366,7 @@ msgstr "Buscar categoría Helpdesk"
 #. module: helpdesk
 #: model:res.groups,name:helpdesk.group_helpdesk_manager
 msgid "Helpdesk Manager"
-msgstr "Manager Helpdesk"
+msgstr "Manager de gestión de soporte"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_ticket_team_search
@@ -378,32 +378,32 @@ msgstr "Buscar equipo Helpdesk"
 #: model:ir.model,name:helpdesk.model_helpdesk_ticket
 #: model:ir.ui.view,arch_db:helpdesk.ticket_view_form
 msgid "Helpdesk Ticket"
-msgstr "Ticket Helpdesk"
+msgstr "Ticket de gestión de soporte"
 
 #. module: helpdesk
 #: model:ir.model,name:helpdesk.model_helpdesk_ticket_category
 msgid "Helpdesk Ticket Category"
-msgstr "Categoría de ticket Helpdesk"
+msgstr "Categoría de ticket de gestión de soporte"
 
 #. module: helpdesk
 #: model:ir.model,name:helpdesk.model_helpdesk_ticket_channel
 msgid "Helpdesk Ticket Channel"
-msgstr "Canal de ticket Helpdesk"
+msgstr "Canal de ticket"
 
 #. module: helpdesk
 #: model:ir.model,name:helpdesk.model_helpdesk_ticket_stage
 msgid "Helpdesk Ticket Stage"
-msgstr "Estado de ticket Helpdesk"
+msgstr "Estado de ticket"
 
 #. module: helpdesk
 #: model:ir.model,name:helpdesk.model_helpdesk_ticket_tag
 msgid "Helpdesk Ticket Tag"
-msgstr "Etiqueta de ticket Helpdesk"
+msgstr "Etiqueta de ticket"
 
 #. module: helpdesk
 #: model:ir.model,name:helpdesk.model_helpdesk_ticket_team
 msgid "Helpdesk Ticket Team"
-msgstr "Equipo de ticket Helpdesk"
+msgstr "Equipo de ticket"
 
 #. module: helpdesk
 #: model:ir.module.category,description:helpdesk.module_helpdesk_category
