@@ -41,11 +41,11 @@ class HelpdeskTicketController(http.Controller):
 
         attachment = ""
         new_ticket = {
-            'partner_name': vals['name'],
-            'category_id': vals['category'],
-            'partner_email': vals['email'],
-            'description': vals['description'],
-            'name': vals['subject'],
+            'partner_name': vals.get('name'),
+            'category_id': vals.get('category'),
+            'partner_email': vals.get('email'),
+            'description': vals.get('description'),
+            'name': vals.get('subject'),
             'attachment_ids': attachment,
             'channel_id':
                 request.env['helpdesk.ticket.channel'].
@@ -53,7 +53,7 @@ class HelpdeskTicketController(http.Controller):
             'partner_id':
                 request.env['res.partner'].sudo().search([
                     ('name', '=', request.env.user.name),
-                    ('email', '=', vals['email'])]).id
+                    ('email', '=', vals.get('email'))]).id
         }
         new_ticket_id = request.env['helpdesk.ticket'].create(
             new_ticket)

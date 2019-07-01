@@ -179,7 +179,7 @@ class HelpdeskTicket(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('number', '/') == '/':
-            vals['number'] = self.env['ir.sequence'].next_by_code(
+            vals['number'] = self.env['ir.sequence'].sudo().next_by_code(
                 'helpdesk.ticket.sequence'
             ) or '/'
         res = super().create(vals)
