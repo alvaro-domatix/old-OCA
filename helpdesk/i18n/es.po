@@ -646,7 +646,7 @@ msgstr "Sobreescribe el valor por mostrado por defecto del estado bloqueado del 
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_partner_id
 #: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_view_search
 msgid "Partner"
-msgstr "Empresa"
+msgstr "Cliente"
 
 #. module: helpdesk
 #: code:addons/helpdesk/models/helpdesk_ticket.py:276
@@ -664,7 +664,7 @@ msgstr "ID de cliente"
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_partner_name
 msgid "Partner Name"
-msgstr "Nombre de la empresa"
+msgstr "Nombre del cliente"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.helpdesk_ticket_views_pivot
@@ -766,7 +766,7 @@ msgstr "Enviar ticket"
 #. module: helpdesk
 #: model:ir.model.fields,field_description:helpdesk.field_helpdesk_ticket_tag_ids
 msgid "Tag"
-msgstr "Etiqueta"
+msgstr "Etiqueta/s"
 
 #. module: helpdesk
 #: model:ir.ui.view,arch_db:helpdesk.view_helpdesk_ticket_tag_form
